@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, {  useState, useEffect } from "react";
 import fetch from "isomorphic-fetch";
 import logo from "../logo.svg";
 import { BACKEND_SERVER_PORT } from "../constants";
@@ -10,7 +10,9 @@ const App = () => {
 	// the query from the database
 	//separate business logic from jsx
 
-	const [data, setData] = useState({ entries: [], loading: false });
+	// const [query, setQuery] = useState("")
+
+	const [data, setData] = useState({ entries: [] });
 
 	// queryDatabase = (offset?) => {
 	// 	// if !archive
@@ -18,16 +20,11 @@ const App = () => {
 	// }
 	useEffect(() => {
 		const fetchEntries = async () => {
-			try {
-				setData({ entries: data.reports, loading: true });
-				const response = await fetch(
-					`http://localhost:${BACKEND_SERVER_PORT}/api/requests?count=10&cursor=2010-11-12T02:18:22.094Z`
-				);
-				const readResponse = await response.json();
-				console.log(readResponse.reports);
-			} catch (e) {
-				console.log(e);
-			}
+			const response = await fetch(
+				`http://localhost:${BACKEND_SERVER_PORT}/api/requests?count=10&cursor=2010-11-12T02:18:22.094Z`
+			);
+			const result = (await response.json()).reports;
+			setData([...data, result])
 		};
 		fetchEntries();
 	}, []);
@@ -52,6 +49,7 @@ const App = () => {
 				<img src={logo} className="App-logo" alt="logo" />
 				<h1 className="App-title">Welcome to Nova's code challenge!</h1>
 			</header>
+			{/* {data.map(data => <h1>{data.id}</h1>)} */}
 			<Dashboard />
 		</div>
 	);
