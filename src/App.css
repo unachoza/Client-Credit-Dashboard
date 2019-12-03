@@ -1,23 +1,36 @@
 * {
-  font-size: 20px;
+	font-size: 20px;
 }
-
+.button {
+	padding: 20;
+	color: "white";
+	background-color: "#000666";
+	font-size: 20;
+	border-radius: 20;
+}
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 80px;
+	height: 80px;
 }
 
 .App-header {
-  background-color: #3D68A3;
-  height: 150px;
-  padding: 20px;
-  color: white;
+	background-color: #3d68a3;
+	height: 150px;
+	padding: 20px;
+	color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+	font-size: 1.5em;
 }
 
+.button {
+	padding: 20;
+	color: "white";
+	background-color: "#000666";
+	font-size: 20;
+	border-radius: 20;
+}

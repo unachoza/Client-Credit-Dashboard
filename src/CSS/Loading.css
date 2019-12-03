@@ -1,3 +1,11 @@
+.button {
+	padding: 20;
+	color: "white";
+	background-color: "#000666";
+	font-size: 20;
+	border-radius: 20;
+}
+
 .loader {
   color: #3D68A3;
   font-size: 20px;
