@@ -1,12 +1,11 @@
 import React from "react";
 
-const Dashboard = ({response}) => {
+const Dashboard = ({reports}) => {
 	return (
 		<div>
-			<header> Credit Report </header>
 
       <div className="dashboard-container">
-      entries here
+      <h1>{reports.id}</h1>
       </div>
 		</div>
 	);
