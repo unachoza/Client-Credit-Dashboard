@@ -4,7 +4,8 @@ const Dashboard = ({reports}) => {
 	return (
 		<div>
       <div className="dashboard-container">
-      <h1 style={{display:"flex"}}>{reports.firstName}</h1>
+        <h1 style={{ display: "flex" }}>{reports.firstName}</h1>
+        <button onClick={(e) => console.log('click')/*change archvie from false to true */}>Archive Report</button>
       </div>
 		</div>
 	);
