@@ -18,10 +18,7 @@ export const archiveReport = async (reportId) => {
 
 }
 
-export const loadMoreReports = async (offset) => {
-// 	// increment offset
-	// 	// this.queryDatabase(offset)
-	// 	// this.renderResponse(response)
-
+export const loadMoreReports =  (offset) => {
+return offset + 10
 }
 

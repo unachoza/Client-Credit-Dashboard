@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "../logo.svg";
 import "../App.css";
 import SimpleTable from "./SimpleTable";
+import Loading from './Loading'
 import { isReportArchived, archiveReport } from "../Utility/Report";
 import { getReportsFromAPI } from "../API/CreditNovaAPI";
 
@@ -31,8 +32,7 @@ class App extends Component {
 					<img src={logo} className="App-logo" alt="logo" />
 					<h1 className="App-title">Welcome to Nova's code challenge!</h1>
 				</header>
-
-				{data.length > 0 ? <SimpleTable reports={data} /> : <p>Loading ... </p>}
+				{data.length > 0 ? <SimpleTable reports={data} /> : <Loading/>}
 			</div>
 		);
 	}
