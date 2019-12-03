@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "../logo.svg";
 import "../App.css";
 import Dashboard from "./Dashboard";
-import { getDataFromAPI } from "../API/CreditNovaAPI";
+import { getDataFromAPI, isReportArchived, archiveReport } from "../API/CreditNovaAPI";
 
 class App extends Component {
 	state = {
@@ -12,6 +12,8 @@ class App extends Component {
 	componentDidMount = async () => {
 		let data = await getDataFromAPI();
 		this.setState({ data });
+		isReportArchived(this.state.data)
+		archiveReport("f0549f2a-ce07-11e7-8caa-db5e161d6850")
 	};
 
 	// queryDatabase = (offset?) => {
@@ -41,8 +43,7 @@ class App extends Component {
 					<img src={logo} className="App-logo" alt="logo" />
 					<h1 className="App-title">Welcome to Nova's code challenge!</h1>
 				</header>
-				{data && data.map(data => <Dashboard reports={data} />)}
-				<Dashboard reports={data} />
+				{data && data.map(data => <Dashboard key={data.id}reports={data} />)}
 			</div>
 		);
 	}
