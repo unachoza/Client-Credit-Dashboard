@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import logo from "../logo.svg";
 import "../App.css";
 import Dashboard from "./Dashboard";
-import { getDataFromAPI, isReportArchived, archiveReport } from "../API/CreditNovaAPI";
+import { isReportArchived, archiveReport } from "../Utility/Report";
+import { getReportsFromAPI } from "../API/CreditNovaAPI";
+
 
 class App extends Component {
 	state = {
@@ -10,25 +12,17 @@ class App extends Component {
 	};
 
 	componentDidMount = async () => {
-		let data = await getDataFromAPI();
+		const cursor = "2000-11-12T02:18:22.094Z";
+		const count = 5;
+		let data = await getReportsFromAPI(count, cursor);
+		console.log(data);
 		this.setState({ data });
 		isReportArchived(this.state.data)
-		let record = await archiveReport("f0549f26-ce07-11e7-8caa-db5e161d6850")
-		this.setState({ thisOne: record })
+		let report = await archiveReport("f0549f22-ce07-11e7-8caa-db5e161d6850")
+		this.setState({ thisOne: report })
 		console.log(this.state)
 	};
 
-
-	// archiveEntry = (entryId) => {
-	// 	// change archive status from false to true
-	// }
-
-
-	// loadMoreEntriesFromDatabase = (event) => {
-	// 	// increment offset
-	// 	// this.queryDatabase(offset)
-	// 	// this.renderResponse(response)
-	// }
 
 	render() {
 		const { data, thisOne } = this.state;
@@ -39,8 +33,14 @@ class App extends Component {
 					<img src={logo} className="App-logo" alt="logo" />
 					<h1 className="App-title">Welcome to Nova's code challenge!</h1>
 				</header>
-				{thisOne?<h2>{thisOne[0].id} {thisOne[0].lastName}</h2>: <p>loading</p>}
-				{data && data.map(data => <Dashboard key={data.id}reports={data} />)}
+				{thisOne ? (
+					<h2>
+						{thisOne[0].id} {thisOne[0].lastName}
+					</h2>
+				) : (
+					<p>loading</p>
+				)}
+				{data && data.map(data => <Dashboard key={data.id} reports={data} />)}
 			</div>
 		);
 	}
