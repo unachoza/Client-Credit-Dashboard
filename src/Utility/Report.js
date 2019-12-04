@@ -9,7 +9,7 @@ export const isReportArchived = (reports) => {
   const availableRecords = reports.filter(report => !report.archived )  
 }
 
-export const archiveReport = async (reportId) => {
+export const archiveThisReport = async (reportId) => {
   const report = (await getReportsFromAPI(count, cursor)).filter(data => data.id === reportId)
   return report
 
