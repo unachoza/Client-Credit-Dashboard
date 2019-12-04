@@ -1,5 +1,5 @@
 import fetch from "isomorphic-fetch";
-import { BACKEND_SERVER_PORT } from "../constants";
+import { BACKEND_SERVER_PORT } from "../redux/constants";
 
 
 const BASE_URL = 'api/requests'
