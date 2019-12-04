@@ -1,4 +1,4 @@
-import { FETCH_REPORTS, FETCH_NEXT_SUBSET_OF_REPORTS, ARCHIVE_REPORT } from './actions'
+import { FETCH_REPORTS, FETCH_NEXT_SUBSET_OF_REPORTS, ARCHIVE_REPORT } from '../actions'
 
 const initialState = {
   reports: []
@@ -30,4 +30,7 @@ export const fetchReports = (state=initialState, action={}) => {
         default: 
           return state
         }
-      }
+    }
+      
+
+
